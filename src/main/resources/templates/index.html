@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>redis发布订阅</title>
+    <link href="/bootstrap.min.css" rel="stylesheet">
+    <script src="/jquery.min.js"></script>
+    <script src="/bootstrap.min.js"></script>
+    <style>
+        .sendDemo{
+            margin-top: 15vh;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row sendDemo">
+        <div class="col-md-3 col-md-offset-4">
+            <input class="form-control" id="message" placeholder="消息">
+        </div>
+        <div class="col-md-1">
+            <input type="button" id="sendMessage" class="btn btn-info" value="发送消息">
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    $('#sendMessage').click(function(){
+        let message = $('#message').val()
+        $.post('/sendMessage',{'text':message},function (){
+            $('#message').val('')
+        })
+    })
+</script>
+</html>
